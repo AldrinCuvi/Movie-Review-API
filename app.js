@@ -21,7 +21,7 @@ app.get('/', (req, res) => res.send('INDEX'));
 app.use('/movies', require('./routes/movies'))
 
 //Port connection
-const PORT = process.env.PORT || 5432;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`Server started on ${PORT}`));
 
 

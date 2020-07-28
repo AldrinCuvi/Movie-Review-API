@@ -17,6 +17,7 @@ module.exports = new Sequelize({
     password:'09a558686271a1bc857cda187efeba1346e1bbab6616c3c3176f987e35c23680',
     database:'daeoeit1q89cqs',
     host: 'ec2-54-81-37-115.compute-1.amazonaws.com',
+    port: 5432,
     dialect: 'postgres',
     ssl: 'true'
 });

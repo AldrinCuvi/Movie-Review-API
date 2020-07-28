@@ -5,7 +5,6 @@
 
 const express = require('express');
 const router = express.Router();
-const data_base = require('../config/data_base');
 const Movie = require('../models/Movie.model');
 const { sequelize } = require('../models/Movie.model');
 
