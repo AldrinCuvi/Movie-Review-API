@@ -48,9 +48,9 @@ router.post('/', async (req, res) => {
 router.put('/:id_pelicula', async (req, res) => {
     try {
         const updateMovie = await Movie.update(
-            { director_pelicula: "Aldrin Cuvi"}, 
+            req.body, 
             { where: 
-                { actores_pelicula: 'Emma Stone' }
+                { id_pelicula: req.params.id_pelicula }
             }
         );
 
@@ -71,7 +71,7 @@ router.put('/:id_pelicula', async (req, res) => {
 router.delete('/:id_pelicula', async (req, res) => {
     try {
         const deleteMovie = Movie.destroy({ where: 
-            { nombre_pelicula: "Lalaland" }
+            { id_pelicula: req.params.id_pelicula }
         });
         res.status(200).json({
             status: "OK",
@@ -84,41 +84,5 @@ router.delete('/:id_pelicula', async (req, res) => {
         });
     }
 });
-
-
-//Add movie
-// router.get('/add', (req, res) => {
-//     const data = {
-//         nombre_pelicula: 'Lalaland',
-//         sinopsis_pelicula: 'Algo de romance ',
-//         actores_pelicula: 'Emma Stone',
-//         director_pelicula: 'No se',
-//         duracion_pelicula: '1:30:00',
-//         genero_pelicula: 'Comendia romántica',
-//         anio_estreno_pelicula: 2017,
-//         clasificacion_pelicula: 'B',
-//         calificacion_pelicula: 10
-
-//     }
-//     let { nombre_pelicula, sinopsis_pelicula, actores_pelicula, 
-//         director_pelicula, duracion_pelicula, genero_pelicula, 
-//         anio_estreno_pelicula, clasificacion_pelicula, calificacion_pelicula } = data;
-
-//     //Insert into table
-//     Movie.create({
-//         nombre_pelicula,
-//         sinopsis_pelicula,
-//         actores_pelicula,
-//         director_pelicula,
-//         duracion_pelicula,
-//         genero_pelicula,
-//         anio_estreno_pelicula,
-//         clasificacion_pelicula,
-//         calificacion_pelicula
-//     })
-//         .then(movie => res.redirect('/movies'))
-//         .catch(err => console.log(err));
-// });
-
 
 module.exports = router;
