@@ -86,3 +86,5 @@ router.delete('/:id_pelicula', async (req, res) => {
 });
 
 module.exports = router;
+
+//JSON.stringify(Objeto)
