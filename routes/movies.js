@@ -56,7 +56,7 @@ router.put('/:id_pelicula', async (req, res) => {
 
         res.status(200).json({
             status: "OK",
-            msg: `Your movie: ${ nombre_pelicula }, was succesfylly updated.` 
+            msg: `Your movie was succesfylly updated.` 
         })
 
     } catch (err) {
