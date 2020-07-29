@@ -7,12 +7,101 @@ const express = require('express');
 const router = express.Router();
 const Movie = require('../models/Movie.model');
 const { sequelize } = require('../models/Movie.model');
+const { Op } = require('sequelize');
 
 //GET all movies
 router.get('/', async (req, res) => {
 
     try {
         const movies = await Movie.findAll();
+        res.status(200).json({
+            status: "OK",
+            movies
+        }) 
+    } catch (err) {
+        res.status(500).json({
+            status: 'Server error.',
+            msg: 'ERROR: ' + err
+        });   
+    }
+    await sequelize.sync();
+});
+
+//GET nombre_pelciula
+router.get('/nombre_pelicula/:nombre_pelicula', async (req, res) => {
+
+    try {
+        const movies = await Movie.findAll({
+            where: {
+                nombre_pelicula: {[Op.substring]: req.params.nombre_pelicula}
+            }
+        });
+        res.status(200).json({
+            status: "OK",
+            movies
+        }) 
+    } catch (err) {
+        res.status(500).json({
+            status: 'Server error.',
+            msg: 'ERROR: ' + err
+        });   
+    }
+    await sequelize.sync();
+});
+
+//GET  anio_estreno_pelicula
+router.get('/anio_estreno_pelicula/:anio_estreno_pelicula', async (req, res) => {
+
+    try {
+        const movies = await Movie.findAll({
+            where: {
+                anio_estreno_pelicula: {[Op.substring]: req.params.anio_estreno_pelicula}
+            }
+        });
+        res.status(200).json({
+            status: "OK",
+            movies
+        }) 
+    } catch (err) {
+        res.status(500).json({
+            status: 'Server error.',
+            msg: 'ERROR: ' + err
+        });   
+    }
+    await sequelize.sync();
+});
+
+//GET  actores_pelicula
+router.get('/actores_pelicula/:actores_pelicula', async (req, res) => {
+
+    try {
+        const movies = await Movie.findAll({
+            where: {
+                actores_pelicula: {[Op.substring]: req.params.actores_pelicula}
+            }
+        });
+        res.status(200).json({
+            status: "OK",
+            movies
+        }) 
+    } catch (err) {
+        res.status(500).json({
+            status: 'Server error.',
+            msg: 'ERROR: ' + err
+        });   
+    }
+    await sequelize.sync();
+});
+
+//GET  genero_pelicula
+router.get('/genero_pelicula/:genero_pelicula', async (req, res) => {
+
+    try {
+        const movies = await Movie.findAll({
+            where: {
+                genero_pelicula: {[Op.substring]: req.params.genero_pelicula}
+            }
+        });
         res.status(200).json({
             status: "OK",
             movies
