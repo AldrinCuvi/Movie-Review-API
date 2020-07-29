@@ -55,7 +55,7 @@ router.get('/anio_estreno_pelicula/:anio_estreno_pelicula', async (req, res) => 
     try {
         const movies = await Movie.findAll({
             where: {
-                anio_estreno_pelicula: {[Op.substring]: req.params.anio_estreno_pelicula}
+                anio_estreno_pelicula: req.params.anio_estreno_pelicula
             }
         });
         res.status(200).json({
