@@ -117,7 +117,7 @@ router.get('/genero_pelicula/:genero_pelicula', async (req, res) => {
 
 
 //POST movies
-router.post('/movies/newMovie', async (req, res) => {
+router.post('/newMovie', async (req, res) => {
     try {
         const newMovie = Movie.build(req.body);
         const result = await newMovie.save();
@@ -134,7 +134,7 @@ router.post('/movies/newMovie', async (req, res) => {
 });
 
 //UPDATE movies
-router.put('/movies/editMovie/:id_pelicula', async (req, res) => {
+router.put('/editMovie/:id_pelicula', async (req, res) => {
     try {
         const updateMovie = await Movie.update(
             req.body, 
