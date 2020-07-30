@@ -5,6 +5,8 @@
 
 const express = require('express');
 
+const cors = require('cors');
+
 //Database connection
 const dataBase = require('./config/data_base');
  
@@ -14,6 +16,8 @@ dataBase.authenticate()
     .catch(err => console.log('ERROR: ' + err));
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
