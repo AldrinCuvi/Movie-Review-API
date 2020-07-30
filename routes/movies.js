@@ -117,7 +117,7 @@ router.get('/genero_pelicula/:genero_pelicula', async (req, res) => {
 
 
 //POST movies
-router.post('/editMovie/:id_pelicula', async (req, res) => {
+router.post('/movies/newMovie', async (req, res) => {
     try {
         const newMovie = Movie.build(req.body);
         const result = await newMovie.save();
@@ -134,7 +134,7 @@ router.post('/editMovie/:id_pelicula', async (req, res) => {
 });
 
 //UPDATE movies
-router.put('/:id_pelicula', async (req, res) => {
+router.put('/movies/editMovie/:id_pelicula', async (req, res) => {
     try {
         const updateMovie = await Movie.update(
             req.body, 
@@ -145,7 +145,7 @@ router.put('/:id_pelicula', async (req, res) => {
 
         res.status(200).json({
             status: "OK",
-            msg: `Your movie was succesfylly updated.` 
+            msg: `Your review was succesfylly updated.` 
         })
 
     } catch (err) {
